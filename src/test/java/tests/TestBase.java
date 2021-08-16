@@ -5,12 +5,14 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.BrowserStackMobileDriver;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
+import static helpers.AttachAllure.*;
+import static helpers.BrowserStack.getBSPublicLink;
 
 public class TestBase {
     @BeforeAll
@@ -29,7 +31,18 @@ public class TestBase {
     }
 
     @AfterEach
-    public void StopDriver() {
+    public void stopDriverAndAddAttach() {
+
+
+        String sessionId = getSessionId();
+
+        attachScreenshot("Last screenshot");
+        attachPageSource();
+
         closeWebDriver();
+
+        attachAsText("Browserstack build link", getBSPublicLink(sessionId));
+
+        attachVideo(sessionId); // in browserstack video url generates after driver close
     }
 }

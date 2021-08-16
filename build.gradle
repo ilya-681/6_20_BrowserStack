@@ -32,6 +32,7 @@ dependencies {
             "io.qameta.allure:allure-selenide:${allureVersion}",
             "io.appium:java-client:7.3.0",
             "org.aeonbits.owner:owner:1.0.12",
+            "io.rest-assured:rest-assured:4.1.2",
             "org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
 }
