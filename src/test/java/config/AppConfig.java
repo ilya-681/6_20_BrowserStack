@@ -16,4 +16,9 @@ public interface AppConfig extends Config {
     @Key("browserStackPassword")
     String browserStackPassword();
 
+    @Key("app")
+    String app();
+
+    @Key("browserStackURL")
+    String browserStackURL();
 }

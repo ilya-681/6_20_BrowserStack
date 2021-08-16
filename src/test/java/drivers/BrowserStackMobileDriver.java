@@ -14,7 +14,7 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
 
     public static URL getBrowserStackUrl() {
         try {
-            return new URL("http://hub.browserstack.com/wd/hub");
+            return new URL(App.config.browserStackURL());
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -28,7 +28,7 @@ public class BrowserStackMobileDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("browserstack.key", App.config.browserStackPassword());
 
         // Set URL of the application under test
-        desiredCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
+        desiredCapabilities.setCapability("app", App.config.app());
 
         // Specify device and os_version for testing
         desiredCapabilities.setCapability("device", Device.config.device());

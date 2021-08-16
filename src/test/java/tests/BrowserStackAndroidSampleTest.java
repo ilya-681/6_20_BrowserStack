@@ -25,7 +25,7 @@ public class BrowserStackAndroidSampleTest {
         caps.setCapability("browserstack.key", App.config.browserStackPassword());
 
         // Set URL of the application under test
-        caps.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
+        caps.setCapability("app", App.config.app());
 
         // Specify device and os_version for testing
         caps.setCapability("device", Device.config.device());
@@ -40,7 +40,7 @@ public class BrowserStackAndroidSampleTest {
         // Initialise the remote Webdriver using BrowserStack remote URL
         // and desired capabilities defined above
         AndroidDriver<AndroidElement> driver = new AndroidDriver<AndroidElement>(
-                new URL("http://hub.browserstack.com/wd/hub"), caps);
+                new URL(App.config.browserStackURL()), caps);
 
 
         // Test case for the BrowserStack sample Android app.
